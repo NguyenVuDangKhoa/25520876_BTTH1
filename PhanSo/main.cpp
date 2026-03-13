@@ -37,27 +37,24 @@ void rutgon(PhanSo& a)
     int kq;
     if (a.x<0 &&a.y<0)
     {
-        a.x=abs(a.x);
-        a.y=abs(a.y);
+
         kq=UCLN(a.x,a.y);
-        a.x=a.x/kq;
-        a.y=a.y/kq;
+        a.x=abs(a.x/kq);
+        a.y=abs(a.y/kq);
     }
 
     else if(a.x<0)
     {
-        a.x=abs(a.x);
         kq=UCLN(a.x,a.y);
-        a.x=-a.x/kq;
+        a.x=a.x/kq;
         a.y=a.y/kq;
 
     }
     else if(a.y<0)
     {
-        a.y=abs(a.y);
         kq=UCLN(a.x,a.y);
         a.x=-a.x/kq;
-        a.y=a.y/kq;
+        a.y=abs(a.y/kq);
 
     }
     else
@@ -120,11 +117,19 @@ int main()
     PhanSo a,b;
     Nhap(a);
     Nhap(b);
-
+    cout<<"Cong:";
     in(Cong(a,b));
+    cout<<"Tru:";
+
     in(Tru(a,b));
+    cout<<"Nhan:";
+
     in(Nhan(a,b));
+    cout<<"Chia:";
+
     in(Chia(a,b));
+    cout<<"So lon nhat giu:";
+
     in(Max(a,b));
     return 0;
 }
