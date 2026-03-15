@@ -4,8 +4,11 @@ struct Date
 {
     int day,month,year;
 };
-
-int Add(Date a)
+void Xuat(Date a)
+{
+    cout<<a.day<<"/"<<a.month<<"/"<<a.year<<endl;
+}
+Date Add(Date a)
 {
     Date x=a;
     x.day++;
@@ -58,7 +61,7 @@ int Add(Date a)
         }
         break;
     }
-    return x.day;
+    return x;
 
 
 
@@ -69,6 +72,6 @@ int main()
 {
     Date a;
     cin>>a.day>>a.month>>a.year;
-    cout<<Add(a);
+    Xuat(Add(a));
     return 0;
 }
