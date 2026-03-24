@@ -8,6 +8,46 @@ void Xuat(Date a)
 {
     cout<<a.day<<"/"<<a.month<<"/"<<a.year<<endl;
 }
+
+bool isLeapYear(int year)
+{
+    return (year % 400 == 0) || (year % 4 == 0 && year % 100 != 0);
+}
+// trả về số ngày trong tháng
+int daysInMonth(int month, int year)
+{
+    switch(month)
+    {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+        return 31;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        return 30;
+    case 2:
+        return isLeapYear(year) ? 29 : 28;
+    default:
+        return 0;
+    }
+}
+
+// kiểm tra ngày hợp lệ
+bool isValidDate(Date a)
+{
+    if (a.year <= 0) return false;
+
+    if (a.month < 1 || a.month > 12) return false;
+    if (a.day < 1 || a.day > daysInMonth(a.month, a.year)) return false;
+    return true;
+}
+
 Date Add(Date a)
 {
     Date x=a;
@@ -67,11 +107,21 @@ Date Add(Date a)
 
 
 
-    }
+}
 int main()
 {
     Date a;
-    cin>>a.day>>a.month>>a.year;
+    do
+    {
+        cout << "Nhap ngay (day month year): ";
+        cin >> a.day >> a.month >> a.year;
+
+        if (!isValidDate(a))
+            cout << "Ngay khong hop le! Nhap lai.\n";
+
+    }
+    while (!isValidDate(a));
+
     Xuat(Add(a));
     return 0;
 }
